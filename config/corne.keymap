@@ -157,55 +157,46 @@
   };
 
   keymap {
-    compatible = "zmk,keymap";
+          compatible = "zmk,keymap";
 
-    base {
-      bindings = <
-        &kp TAB    &kp Q         &kp W         &kp E        &kp R                                    &kp T        &kp Y    &kp U                                     &kp I        &kp O         &kp P            &kp BSLH
-        &capdance  &hml LSHFT A  &hml LCTRL S  &hml LALT D  &hml LCMD F                              &kp G        &kp H    &hmr RCMD J                               &hmr RALT K  &hmr RCTRL L  &hmr RSHFT SEMI  &kp APOS
-        &kp LSHFT  &kp Z         &kp X         &kp C        &kp V                                    &kp B        &kp N    &kp M                                     &kp COMMA    &kp DOT       &kp FSLH         &kp ESC
-                                               &kp LGUI     &rgblayer 1 RGB_COLOR_HSB_VAL(80,70,50)  &kp SPACE    &kp RET  &rgblayer 2 RGB_COLOR_HSB_VAL(180,70,50)  &kp RALT
-      >;
+          base {
+              bindings = <
+            &to 1     &kp Q  &kp W  &kp F     &kp P                 &kp B        &kp J    &kp L                 &kp U           &kp
+            Y    &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
+            &kp TAB    &kp A  &kp R  &kp S     &hml LS(LG(SPACE)) T  &kp G        &kp M    &hml LS(LG(SPACE)) N  &kp E           &kp I    &kp O                 &kp SEMI
+            &kp LSHFT  &kp Z  &kp X  &kp C     &kp D                 &kp V        &kp K    &kp H                 &hml SQT COMMA  &kp DOT  &kp QUESTION          &kp EXCLAMATION
+                                     &kp LGUI  &trans                &kp SPACE    &kp RET  &lt 1 BACKSPACE       &kp LALT
+                  >;
+          };
 
-      sensor-bindings = <&rgbknob RGB_HUI RGB_HUD>, <&rgbknob RGB_BRI RGB_BRD>;
-    };
+          nums {
+                      bindings = <
+          &trans         &kp LS(EXCL)   &kp LS(AT)   &kp LS(POUND)   &kp LS(DLLR)     &kp LS(PRCNT)    &kp LS(CARET)  &kp LS(AMPS)
+          &kp LS(STAR)  &kp LS(LPAR)  &kp LS(RPAR)  &kp GRAVE
+          &kp LESS_THAN  &kp N1         &kp N2       &kp N3          &kp N4           &kp N5           &kp N6         &kp N7        &kp N8        &kp N9        &kp N0        &kp GREATER_THAN
+          &trans        &trans  &kp PLUS  &kp LEFT_BRACE  &kp RIGHT_BRACE  &kp FSLH         &kp NUBS       &kp LBKT
+          &kp RBKT      &kp MINUS     &kp EQUAL     &trans
+                                                     &kp LGUI        &trans           &kp SPACE        &kp RET        &trans        &kp LALT
+                      >;
+                  };
 
-    raise {
-      bindings = <
-        &trans      &kp N1        &kp N2        &kp N3        &kp N4        &kp N5          &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &trans
-        &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &trans  &trans  &trans  &trans  &trans  &trans
-        &trans      &trans        &trans        &trans        &trans        &trans          &trans  &trans  &trans  &trans  &trans  &trans
-                                                &trans        &trans        &trans          &trans  &trans  &trans
-      >;
+          os {
+                      bindings = <
+          &kp F1  &kp F2      &kp F3       &kp F4     &kp F5     &kp F6       &kp F7     &kp F8     &kp F9     &kp F10       &kp F11        &kp F12
+          &trans  &kp DELETE  &kp LS(TAB)  &kp LEFT   &kp RIGHT  &mkp LCLK    &mkp RCLK  &kp UP     &kp DOWN   &kp TAB       &kt BACKSPACE  &trans
+          &trans  &trans      &kp LG(X)    &kp LG(A)  &kp LG(C)  &trans       &trans     &kp LG(V)  &kp LG(F)  &kp LA(LGUI)  &trans         &trans
+                                           &kp LGUI   &to 0      &kp SPACE    &kp ENTER  &mo 3      &kp LALT
+                      >;
+                  };
 
-      sensor-bindings = <&volknob>;
-    };
+                  mouse {
+                      bindings = <
+          &trans  &trans  &trans  &trans          &trans           &trans       &trans     &trans        &trans          &trans  &trans  &trans
+          &trans  &trans  &trans  &msc SCRL_LEFT  &msc SCRL_RIGHT  &mkp LCLK    &mkp RCLK  &msc SCRL_UP  &msc SCRL_DOWN  &trans  &trans  &trans
+          &trans  &trans  &trans  &mmv MOVE_LEFT  &mmv MOVE_RIGHT  &mkp LCLK    &mkp RCLK  &mmv MOVE_UP  &mmv MOVE_DOWN  &trans  &trans  &trans
+                                  &trans          &trans           &mkp LCLK    &trans     &trans        &trans
+                      >;
+                  };
 
-    lower {
-      bindings = <
-        &trans  &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT    &kp CARET  &kp AMPS   &kp STAR  &kp LPAR  &kp RPAR  &trans
-        &trans  &trans    &trans  &trans    &trans    &trans       &kp MINUS  &kp EQUAL  &kp LBKT  &kp RBKT  &kp BSLH  &kp GRAVE
-        &trans  &trans    &trans  &trans    &trans    &trans       &kp UNDER  &kp PLUS   &kp LBRC  &kp RBRC  &kp PIPE  &kp TILDE
-                                  &trans    &trans    &trans       &trans     &trans     &trans
-      >;
-    };
-
-    both {
-      bindings = <
-        &rgb_ug RGB_COLOR_HSB(0,80,60)  &rgb_ug RGB_COLOR_HSB(20,80,60)  &rgb_ug RGB_COLOR_HSB(40,80,60)  &rgb_ug RGB_COLOR_HSB(60,80,60)  &rgb_ug RGB_COLOR_HSB(80,80,60)  &rgb_ug RGB_COLOR_HSB(100,80,60)    &rgb_ug RGB_COLOR_HSB(120,80,60)  &rgb_ug RGB_COLOR_HSB(140,80,60)  &rgb_ug RGB_COLOR_HSB(160,80,60)  &rgb_ug RGB_COLOR_HSB(180,80,60)  &rgb_ug RGB_COLOR_HSB(200,80,60)  &rgb_ug RGB_COLOR_HSB(220,80,60)
-        &rgb_ug RGB_COLOR_HSB(0,60,40)  &rgb_ug RGB_COLOR_HSB(20,60,40)  &rgb_ug RGB_COLOR_HSB(40,60,40)  &rgb_ug RGB_COLOR_HSB(60,60,40)  &rgb_ug RGB_COLOR_HSB(80,60,40)  &rgb_ug RGB_COLOR_HSB(100,60,40)    &rgb_ug RGB_COLOR_HSB(120,60,40)  &rgb_ug RGB_COLOR_HSB(140,60,40)  &rgb_ug RGB_COLOR_HSB(160,60,40)  &rgb_ug RGB_COLOR_HSB(180,60,40)  &rgb_ug RGB_COLOR_HSB(200,60,40)  &rgb_ug RGB_COLOR_HSB(220,60,40)
-        &rgb_ug RGB_COLOR_HSB(0,80,30)  &rgb_ug RGB_COLOR_HSB(20,80,30)  &rgb_ug RGB_COLOR_HSB(40,80,30)  &rgb_ug RGB_COLOR_HSB(60,80,30)  &rgb_ug RGB_COLOR_HSB(80,80,30)  &rgb_ug RGB_COLOR_HSB(100,80,30)    &rgb_ug RGB_COLOR_HSB(120,80,30)  &rgb_ug RGB_COLOR_HSB(140,80,30)  &rgb_ug RGB_COLOR_HSB(160,80,30)  &rgb_ug RGB_COLOR_HSB(180,80,30)  &rgb_ug RGB_COLOR_HSB(200,80,30)  &rgb_ug RGB_COLOR_HSB(220,80,30)
-                                                                                                          &trans                           &trans                           &trans                              &trans                            &trans                            &trans
-      >;
-    };
-
-    autoshift {
-      bindings = <
-        &trans  &as Q  &as W  &as E   &as R   &as T     &as Y   &as U   &as I   &as O   &as P   &trans
-        &trans  &as A  &as S  &as D   &as F   &as G     &as H   &as J   &as K   &as L   &trans  &trans
-        &trans  &as Z  &as X  &as C   &as V   &as B     &as N   &as M   &trans  &trans  &trans  &trans
-                              &trans  &trans  &trans    &trans  &trans  &trans
-      >;
-    };
-  };
+      };
 };
